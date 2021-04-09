@@ -63,19 +63,23 @@ function App() {
               </TableHead>
               <TableBody>
                 {countriesData.map((country) => (
-                  <TableRow>
+                  <TableRow key={country.numericCode}>
                     <TableCell component="th" scope="row">
                       <Router>
-                        <MoreInfo key={country.numericCode} country={country} />
+                        <MoreInfo country={country} />
                       </Router>
                     </TableCell>
                     <TableCell align="right">
                       {console.log(country)}
                       <img src={country.flag} alt="" width="32px" />
                     </TableCell>
-                    <TableCell align="right">{country.capital}</TableCell>
+                    <TableCell align="right">
+                      {country.capital || "NA"}
+                    </TableCell>
                     <TableCell align="right">{country.population}</TableCell>
-                    <TableCell align="right">{country.region}</TableCell>
+                    <TableCell align="right">
+                      {country.region || "NA"}
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

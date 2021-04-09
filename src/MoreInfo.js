@@ -12,7 +12,7 @@ function MoreInfo(props) {
   return (
     <>
       <IconContext.Provider value={{ color: "#000" }}>
-        <div className="navbar">
+        <div className="navbar" key={country.numericCode}>
           <Link to="#" className="menu-bars">
             <p onClick={showSidebar}>{country.name}</p>
           </Link>
@@ -27,10 +27,21 @@ function MoreInfo(props) {
                   <AiIcons.AiOutlineClose />
                 </div>
               </section>
-              <h3>Capital : {country.capital}</h3>
-              <p>region : {country.region}</p>
+              <h3>Capital : {country.capital || "NA"}</h3>
+              <p>region : {country.region || "NA"}</p>
               <p>population : {country.population}</p>
               <p>Country Code : {country.numericCode}</p>
+              <p>
+                <strong>widely used Languages : </strong>{" "}
+                {country.languages.map((language, index) => {
+                  return (
+                    <span key={index}>
+                      <br />
+                      {language.name}
+                    </span>
+                  );
+                })}
+              </p>
             </div>
           </div>
         </nav>
